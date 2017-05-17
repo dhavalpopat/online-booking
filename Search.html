@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=2">
+	  
+	  <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
+      <script type = "application/javascript">
+         function loadJSON(){
+            var data_file = "searchdata.json";
+            var http_request = new XMLHttpRequest();
+			
+            http_request.onreadystatechange = function(){
+			
+               if (http_request.readyState == 4  ){
+                  // Javascript function JSON.parse to parse JSON data
+                  var jsonObj = JSON.parse(http_request.responseText);
+
+                  // jsonObj variable now contains the data structure and can
+                  // be accessed as jsonObj.name, jsonObj.from, jsonObj.to and jsonObj.date
+                  document.getElementById("Name1").innerHTML = jsonObj[0].name;
+                  document.getElementById("From1").innerHTML = jsonObj[0].from;
+				  document.getElementById("To1").innerHTML = jsonObj[0].to;
+				  document.getElementById("Date1").innerHTML = jsonObj[0].date;
+				  document.getElementById("Name2").innerHTML = jsonObj[1].name;
+                  document.getElementById("From2").innerHTML = jsonObj[1].from;
+				  document.getElementById("To2").innerHTML = jsonObj[1].to;
+				  document.getElementById("Date2").innerHTML = jsonObj[1].date;
+				  document.getElementById("Name3").innerHTML = jsonObj[2].name;
+                  document.getElementById("From3").innerHTML = jsonObj[2].from;
+				  document.getElementById("To3").innerHTML = jsonObj[2].to;
+				  document.getElementById("Date3").innerHTML = jsonObj[2].date;
+				  document.getElementById("Name4").innerHTML = jsonObj[3].name;
+                  document.getElementById("From4").innerHTML = jsonObj[3].from;
+				  document.getElementById("To4").innerHTML = jsonObj[3].to;
+				  document.getElementById("Date4").innerHTML = jsonObj[3].date;
+				  document.getElementById("Name5").innerHTML = jsonObj[4].name;
+                  document.getElementById("From5").innerHTML = jsonObj[4].from;
+				  document.getElementById("To5").innerHTML = jsonObj[4].to;
+				  document.getElementById("Date5").innerHTML = jsonObj[4].date;
+				  document.getElementById("Name6").innerHTML = jsonObj[5].name;
+                  document.getElementById("From6").innerHTML = jsonObj[5].from;
+				  document.getElementById("To6").innerHTML = jsonObj[5].to;
+				  document.getElementById("Date6").innerHTML = jsonObj[5].date;
+               }
+            }
+			
+            http_request.open("GET", data_file, true);
+            http_request.send();
+         }
+		
+      </script>
+	  
+      <title>Search</title>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css">
+      <style>
+         @media screen and (max-width: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media all and (max-height: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media print and (max-resolution: 200dpi) {
+         h2 {
+         font-size: 30px;
+         color: #ffffff;
+         }
+         }
+      </style>
+      <script src="library.js"></script>
+      <script>
+         function book() {
+         	alert("Your ticket has been booked. Thank you!");
+         }
+      </script>
+   </head>
+   <body>
+      <header class='image'>
+         <div class='wrapper'>
+            <a href="Home.html">
+            <img src='logo.jpg'>
+            </a>
+         </div>
+      </header>
+      <hr>
+      <table>
+         <tr>
+            <th>
+               <p>Name</p>
+            </th>
+            <th>
+               <p>From</p>
+            </th>
+            <th>
+               <p>To</p>
+            </th>
+            <th>
+               <p>Date</p>
+            </th>
+            <th>
+               <p>	</p>
+            </th>
+         </tr>
+         <tr>
+            <td id="Name1">
+               <p>Air India</p>
+            </td>
+            <td id="From1">
+               <p>Mumbai</p>
+            </td>
+            <td id="To1">
+               <p>Delhi</p>
+            </td>
+            <td id="Date1">
+               <p>1st June 2016</p>
+            </td>
+            <td> <button class='button' onclick="book();">Book now</button> </td>
+         </tr>
+         <tr>
+            <td id="Name2">
+               <p>Tamil Nadu Express</p>
+            </td>
+            <td id="From2">
+               <p>Delhi</p>
+            </td>
+            <td id="To2">
+               <p>Chennai</p>
+            </td>
+            <td id="Date2">
+               <p>1st June 2016</p>
+            </td>
+            <td> <button class='button' onclick="book();">Book now</button> </td>
+         </tr>
+         <tr>
+            <td id="Name3">
+               <p>Jet Airways</p>
+            </td>
+            <td id="From3">
+               <p>Chennai</p>
+            </td>
+            <td id="To3">
+               <p>Kolkata</p>
+            </td>
+            <td id="Date3">
+               <p>1st June 2016</p>
+            </td>
+            <td> <button class='button' onclick="book();">Book now</button> </td>
+         </tr>
+         <tr>
+            <td id="Name4">
+               <p>GoAir</p>
+            </td>
+            <td id="From4">
+               <p>Kolkata</p>
+            </td>
+            <td id="To4">
+               <p>Mumbai</p>
+            </td>
+            <td id="Date4">
+               <p>1st June 2016</p>
+            </td>
+            <td> <button class='button' onclick="book();">Book now</button> </td>
+         </tr>
+         <tr>
+            <td id="Name5">
+               <p>SpiceJet</p>
+            </td>
+            <td id="From5">
+               <p>Delhi</p>
+            </td>
+            <td id="To5">
+               <p>Kolkata</p>
+            </td>
+            <td id="Date5">
+               <p>1st June 2016</p>
+            </td>
+            <td> <button class='button' onclick="book();">Book now</button> </td>
+         </tr>
+         <tr>
+            <td id="Name6">
+               <p>Chennai Mail</p>
+            </td>
+            <td id="From6">
+               <p>Mumbai</p>
+            </td>
+            <td id="To6">
+               <p>Chennai</p>
+            </td>
+            <td id="Date6">
+               <p>1st June 2016</p>
+            </td>
+            <td> <button class='button' onclick="book();">Book now</button> </td>
+         </tr>
+      </table>
+	  <br>
+	  <div style="text-align:center">
+		<button class='button' onclick="loadJSON()">Update Results</button>
+	  </div>
+	  <br>
+      <hr>
+      <footer class='image'>
+         <nav>
+            <a href="About_us.html">About us</a> |
+            <a href="Contact_us.html">Contact us</a> |
+            <a href="Feedback.html">Feedback</a>
+         </nav>
+      </footer>
+   </body>
+</html>

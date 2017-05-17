@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=2">
+      <title>Edit profile</title>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css">
+      <style>
+         @media screen and (max-width: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media all and (max-height: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media print and (max-resolution: 200dpi) {
+         h2 {
+         font-size: 30px;
+         color: #ffffff;
+         }
+         }
+      </style>
+      <script src="library.js"></script>
+      <script>
+         $(document).ready(function() {
+         	$('select').on('change', function (e) {
+         	
+             var optionSelected = $("option:selected", this);
+             var value = this.value;
+         	
+             if(value=='e_profile')
+             	window.location='Edit_profile.html';
+             else if(value=='view'||value=='cancel')
+             	window.location='View.html';
+             else if(value=='logout')
+             	window.location='Home.html';
+         
+             });
+         });
+      </script>
+   </head>
+   <body>
+      <header class='image'>
+         <div class='wrapper'>
+            <a href="home.html">
+            <img src='logo.jpg'>
+            </a>
+            <div class="login_area login">
+               Welcome newuser
+               <br>
+               <select id='option'>
+                  <option selected></option>
+                  <option value='e_profile'>Edit profile</option>
+                  <option value='view'>View e-ticket</option>
+                  <option value='cancel'>Cancel booking</option>
+                  <option value='logout'>Logout</option>
+               </select>
+            </div>
+            <div class="login">
+               <img src='newuser_img.jpg'>
+            </div>
+         </div>
+      </header>
+      <form>
+         <p class="para_text">
+            <img src='newuser_img.jpg'>
+            <br>
+            <br>
+            <input type='file'>
+            <br>
+            <br>
+            Current Password:
+            <br>
+            <input type='password' class='textarea' style="float:none;" required minlength="5">
+            <br>
+            <br>
+            New password:
+            <br>
+            <input type='password' class='textarea' style="float:none;" required minlength="5">
+            <br>
+            <br>
+            Confirm password:
+            <br>
+            <input type='password' class='textarea' style="float:none;" required minlength="5">
+            <br>
+            <br>
+            <br>
+            <br>
+            <input type="submit" class="submit" value="Save changes">
+         </p>
+      </form>
+      <footer class='image footer'>
+         <nav>
+            <a href="About_us.html">About us</a>|
+            <a href="Contact_us.html">Contact us</a>|
+            <a href="Feedback.html">Feedback</a>
+         </nav>
+      </footer>
+   </body>
+</html>

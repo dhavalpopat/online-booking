@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=2">
+      <title>View tickets</title>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css">
+      <style>
+         @media screen and (max-width: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media all and (max-height: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media print and (max-resolution: 200dpi) {
+         h2 {
+         font-size: 30px;
+         color: #ffffff;
+         }
+         }
+      </style>
+      <script src="library.js"></script>
+      <script type="text/javascript">
+         $(document).ready(function() {
+         	$('select').on('change', function (e) {
+         		var optionSelected = $("option:selected", this);
+         		var value = this.value;
+         
+         		if(value=='e_profile')
+         			window.location='Edit_profile.html';
+         		else if(value=='view'||value=='cancel')
+         			window.location='View.html';
+         		else if(value=='logout')
+         			window.location='Home.html';
+         	});
+         });
+         
+         function cancel() {
+         	alert("Your ticket has been cancelled");
+         }
+      </script>
+   </head>
+   <body>
+      <header class='image'>
+         <div class='wrapper'>
+            <a href="Home.html">
+            <img src='logo.jpg'>
+            </a>
+            <div class="login_area login">
+               Welcome newuser
+               <br>
+               <select id='option'>
+                  <option selected></option>
+                  <option value='e_profile'>Edit profile</option>
+                  <option value='view'>View e-ticket</option>
+                  <option value='cancel'>Cancel booking</option>
+                  <option value='logout'>Logout</option>
+               </select>
+            </div>
+            <div class="login">
+               <img src='newuser_img.jpg'>
+            </div>
+         </div>
+      </header>
+      <hr>
+      <table>
+         <tr>
+            <th>
+               <p>Name</p>
+            </th>
+            <th>
+               <p>From</p>
+            </th>
+            <th>
+               <p>To</p>
+            </th>
+            <th>
+               <p>Date</p>
+            </th>
+            <th>
+               <p>Mode</p>
+            </th>
+            <th>
+               <p>	</p>
+            </th>
+         </tr>
+         <tr>
+            <td>
+               <p>Air India</p>
+            </td>
+            <td>
+               <p>Mumbai</p>
+            </td>
+            <td>
+               <p>Delhi</p>
+            </td>
+            <td>
+               <p>1st June 2016</p>
+            </td>
+            <td>
+               <p>Flight</p>
+            </td>
+            <td>
+               <button class='button' onClick="window.open('flight_ticket.pdf');">Print ticket</button>
+               <button class='button' onClick='cancel();'>Cancel booking</button>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>Tamil Nadu Express</p>
+            </td>
+            <td>
+               <p>Delhi</p>
+            </td>
+            <td>
+               <p>Chennai</p>
+            </td>
+            <td>
+               <p>1st June 2016</p>
+            </td>
+            <td>
+               <p>Train</p>
+            </td>
+            <td>
+               <button class='button' onClick="window.open('train_ticket.pdf');">Print ticket</button>
+               <button class='button' onClick='cancel();'>Cancel booking</button>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>Jet Airways</p>
+            </td>
+            <td>
+               <p>Chennai</p>
+            </td>
+            <td>
+               <p>Kolkata</p>
+            </td>
+            <td>
+               <p>1st June 2016</p>
+            </td>
+            <td>
+               <p>Flight</p>
+            </td>
+            <td>
+               <button class='button' onClick="window.open('flight_ticket.pdf');">Print ticket</button>
+               <button class='button' onClick='cancel();'>Cancel booking</button>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>GoAir</p>
+            </td>
+            <td>
+               <p>Kolkata</p>
+            </td>
+            <td>
+               <p>Mumbai</p>
+            </td>
+            <td>
+               <p>1st June 2016</p>
+            </td>
+            <td>
+               <p>Flight</p>
+            </td>
+            <td>
+               <button class='button' onClick="window.open('flight_ticket.pdf');">Print ticket</button>
+               <button class='button' onClick='cancel();'>Cancel booking</button>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>SpiceJet</p>
+            </td>
+            <td>
+               <p>Delhi</p>
+            </td>
+            <td>
+               <p>Kolkata</p>
+            </td>
+            <td>
+               <p>1st June 2016</p>
+            </td>
+            <td>
+               <p>Flight</p>
+            </td>
+            <td>
+               <button class='button'onClick="window.open('flight_ticket.pdf');">Print ticket</button>
+               <button class='button' onClick='cancel();'>Cancel booking</button>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>Chennai Mail</p>
+            </td>
+            <td>
+               <p>Mumbai</p>
+            </td>
+            <td>
+               <p>Chennai</p>
+            </td>
+            <td>
+               <p>1st June 2016</p>
+            </td>
+            <td>
+               <p>Train</p>
+            </td>
+            <td>
+               <button class='button' onClick="window.open('train_ticket.pdf');">Print ticket</button>
+               <button class='button' onClick='cancel();'>Cancel booking</button>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <footer class='image footer'>
+         <nav>
+            <a href="About_us.html">About us</a> |
+            <a href="Contact_us.html">Contact us</a> |
+            <a href="Feedback.html">Feedback</a>
+         </nav>
+      </footer>
+   </body>
+</html>

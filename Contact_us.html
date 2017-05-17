@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=2">
+	  
+		<script src = "http://maps.googleapis.com/maps/api/js"></script>
+		<script>
+		var myCenter = new google.maps.LatLng(19.0731291,72.8996456);
+		var marker;
+
+		function initialize() {
+
+		var mapProp = {
+		center: myCenter,
+		zoom: 16,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+
+		var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+		var marker = new google.maps.Marker({
+		position: myCenter,
+		animation: google.maps.Animation.BOUNCE
+		 });
+
+		marker.setMap(map);
+		varinfowindow = new google.maps.InfoWindow({
+		content: "Head Office"
+		});
+
+		infowindow.open(map,marker);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	  
+      
+	  
+      <title>Contact us</title>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css">
+      <style>
+         @media screen and (max-width: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media all and (max-height: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media print and (max-resolution: 200dpi) {
+         h2 {
+         font-size: 30px;
+         color: #ffffff;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <header class='image'>
+         <div class='wrapper'>
+            <a href="Home.html">
+            <img src='logo.jpg'>
+            </a>
+         </div>
+      </header>
+      <hr>
+      <br>
+	  <div class='wrapper'>
+	  <div class='next'>
+	  
+      <p id='json_data' class='para_text'>
+      </p>
+	  
+      <!-- SCRIPT SHOULD BE WRITTEN AFTER THE PART WHERE THE JSON DATA WILL BE DISPLAYED -->
+	  <script>
+		var data = '{"address":"Address: 73, C.P.Tank Road, Mumbai-400 004","phone":"Phone Number: 022-2301520","email":"Email: contact@onlinebooking.com"}';
+		var jsonObj = JSON.parse(data);
+		document.getElementById("json_data").innerHTML = jsonObj.address + "<br><br>" + jsonObj.phone + "<br><br>" + jsonObj.email;
+      </script>
+	  
+	  <br> 
+	  <br>
+      <br>
+	  </div>
+	  <div class='next' id="googleMap" style="width:500px;height:380px;float:right;">
+      </div>
+	  </div>
+	  <hr>
+      <footer class='image footer'>
+         <nav>
+            <a href="About_us.html">About us</a> |
+            <a href="Contact_us.html">Contact us</a> |
+            <a href="Feedback.html">Feedback</a>
+         </nav>
+      </footer>
+   </body>
+</html>

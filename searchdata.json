@@ -1,0 +1,6 @@
+[{"name": "GoAir", "from": "Chennai", "to": "Kolkata", "date": "1st June 2016"},
+{"name": "Chennai Mail", "from": "Mumbai", "to": "Chennai", "date": "1st June 2016"},
+{"name": "Air India", "from": "Kolkata", "to": "Mumbai", "date": "1st June 2016"},
+{"name": "SpiceJet", "from": "Chennai", "to": "Delhi", "date": "1st June 2016"},
+{"name": "Tamil Nadu Express", "from": "Mumbai", "to": "Delhi", "date": "1st June 2016"},
+{"name": "Jet Airways", "from": "Kolkata", "to": "Delhi", "date": "1st June 2016"}]

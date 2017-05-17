@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=2">
+      <title>Home</title>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css">
+      <style>
+         @media screen and (max-width: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media screen and (max-width: 800px) {
+         .section {
+         overflow: scroll; 
+         height: 400px;
+         width:90%;
+         }
+         .para_text {
+         color: black;
+         }	
+         }
+         @media all and (max-height: 500px) {
+         body {
+         background-image: url("background.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .para_text {
+         color: black;
+         }
+         }
+         @media screen and (orientation: portrait) {
+         .section {
+         overflow: scroll; 
+         height: 400px;
+         width:100%;
+         }
+         }
+         @media print and (max-resolution: 200dpi) {
+         h2 {
+         font-size: 30px;
+         color: #ffffff;
+         }
+         }
+      </style>
+      <script src="library.js"></script>
+      <script>
+         $(document).ready(function() {
+         	$('.section ul a').on('click', function(e)  {
+         		var currentAttrValue = $(this).attr('href');
+          
+         		// Show/Hide Tabs
+         		$('.section ' + currentAttrValue).show().siblings().hide();
+          
+         		// Change/remove current tab to active
+         		$(this).parent('li').addClass('active').siblings().removeClass('active');
+          
+         		e.preventDefault();
+         	});
+         	
+         	$('select').on('change', function (e) {
+         		var optionSelected = $("option:selected", this);
+         		var value = this.value;
+         
+         		if(value=='e_profile')
+         			window.location='Edit_profile.html';
+         		else if(value=='view'||value=='cancel')
+         			window.location='View.html';
+         		else if(value=='logout')
+         			window.location='Home.html';
+         	});
+         });
+         
+         function myfunc(obj) {
+            var id = obj.id;
+            var src = id + '.mp4';
+            $('#desc').replaceWith("<table id='desc'><tr><td>"+id+" tour</td></tr><tr><td>Enjoy all exclusive "+id+" tour just at Rs.10000</td></tr></table>");
+            $('#vid').replaceWith("<video id='vid' controls> <source src='" + src + "' type='video/mp4'> </video>");
+            $('.section ' + '#deals').show().siblings().hide();
+          
+            // Change/remove current tab to active
+            $('#deal').parent('li').addClass('active').siblings().removeClass('active');
+         }
+      </script>
+	  
+	  <script>
+		var xmlhttp = new XMLHttpRequest();
+		var url = "data.json";
+
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				myFunction(xmlhttp.responseText);
+			}
+		}
+
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+
+		function myFunction(response) {
+
+			var arr = JSON.parse(response);
+			var i;	
+			var out = "<p>";
+
+			for(i = 0; i < arr.length; i++) {
+				out += "Welcome " + 
+				arr[i].email;
+			}
+
+			out += "</p>";
+			document.getElementById("welcome").innerHTML = out;
+		}
+      </script>
+	  
+   </head>
+   <body>
+      <header class='image'>
+         <div class='wrapper'>
+            <a href="Home.html">
+            <img src='logo.jpg'>
+            </a>
+            <div class="login_area login">
+               <div id='welcome'>
+				  <!--Welcome newuser-->
+               </div>
+               <select id='option'>
+                  <option selected></option>
+                  <option value='e_profile'>Edit profile</option>
+                  <option value='view'>View e-ticket</option>
+                  <option value='cancel'>Cancel booking</option>
+                  <option value='logout'>Logout</option>
+               </select>
+			   <br>
+			   <br>
+            </div>
+            <div class="login">
+               <img src='newuser_img.jpg'>
+            </div>
+         </div>
+      </header>
+      <hr>
+      <div class='wrapper'>
+         <div class="section">
+            <ul>
+               <li class="active"><a href="#flights">Flights</a></li>
+               <li><a href="#hotels">Hotels</a></li>
+               <li><a href="#trains">Trains</a></li>
+               <li><a href="#bus">Bus</a></li>
+               <li><a href="#deals">Deals</a></li>
+            </ul>
+            <br>
+            <br>
+            <div id="tab-content">
+               <div id="flights" class="tab active">
+                  <form name="Flights" action="Search.html">
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           From
+                           <br>
+                           <select name="from">
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Delhi">Delhi</option>
+                              <option value="Chennai">Chennai</option>
+                              <option value="Kolkata">Kolkata</option>
+                           </select>
+                        </div>
+                        <div class='next'>
+                           To
+                           <br>
+                           <select name="to">
+                              <option value="Delhi">Delhi</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Chennai">Chennai</option>
+                              <option value="Kolkata">Kolkata</option>
+                           </select>
+                        </div>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        Departure date
+                        <br>
+                        <input type="date" class="cal" name="departure" min="2016-01-01" required>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           Adult
+                           <br>
+                           <input type="number" class="number" value="1" min='1'>
+                        </div>
+                        <div class='next'>
+                           Child
+                           <br>
+                           <input type="number" class="number" value="0" min='0'>
+                        </div>
+                        <div class='next'>
+                           Class
+                           <br>
+                           <select name="class">
+                              <option value="Economy">Economy</option>
+                              <option value="Business">Business</option>
+                           </select>
+                        </div>
+                     </div>
+                     <br>
+                     <br>
+                     <br>
+                     <input type="submit" class="submit" value="Search Flights">
+                  </form>
+               </div>
+               <div id="hotels" class="tab">
+                  <form name="Hotels" action="Search.html">
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           Destination
+                           <br>
+                           <input type="search" class="textarea" name="search_destination" required>
+                        </div>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           Check-in
+                           <br>
+                           <input type="date" class="cal" name="check-in" min="2016-01-01" required>
+                        </div>
+                        <div class='next'>
+                           Check-out
+                           <br>
+                           <input type="date" class="cal" name="check-out" min="2016-01-01" required>
+                        </div>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           Number of rooms
+                           <br>
+                           <input type="number" name="rooms" class="number" value="1" min='1'>
+                        </div>
+                        <div class='next'>
+                           Type
+                           <br>
+                           <select name="class">
+                              <option value="Standard">Standard</option>
+                              <option value="Duplex">Duplex</option>
+                              <option value="Twin">Twin</option>
+                              <option value="Deluxe">Deluxe</option>
+                              <option value="Suite">Suite</option>
+                           </select>
+                        </div>
+                     </div>
+                     <br>
+                     <br>
+                     <br>
+                     <input type="submit" class="submit" value="Search Hotels">
+                  </form>
+               </div>
+               <div id="trains" class="tab">
+                  <form name="Trains" action="Search.html">
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           From
+                           <br>
+                           <select name="from">
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Delhi">Delhi</option>
+                              <option value="Chennai">Chennai</option>
+                              <option value="Kolkata">Kolkata</option>
+                           </select>
+                        </div>
+                        <div class='next'>
+                           To
+                           <br>
+                           <select name="to">
+                              <option value="Delhi">Delhi</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Chennai">Chennai</option>
+                              <option value="Kolkata">Kolkata</option>
+                           </select>
+                        </div>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        Departure date
+                        <br>
+                        <input type="date" class="cal" name="departure" min="2016-01-01" required>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           Adult
+                           <br>
+                           <input type="number" name="adult" class="number" value="1" min='0'>
+                        </div>
+                        <div class='next'>
+                           Child
+                           <br>
+                           <input type="number" name="child" class="number" value="0" min='0'>
+                        </div>
+                        <div class='next'>
+                           Class
+                           <br>
+                           <select name="class">
+                              <option value="Sleeper class">Sleeper class</option>
+                              <option value="Third AC">Third AC</option>
+                              <option value="Second AC">Second AC</option>
+                              <option value="First AC">First AC</option>
+                           </select>
+                        </div>
+                     </div>
+                     <br>
+                     <br>
+                     <br>
+                     <input type="submit" class="submit" value="Search Trains">
+                  </form>
+               </div>
+               <div id="bus" class="tab">
+                  <form name="Bus" action="Search.html">
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           From
+                           <br>
+                           <select name="from">
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Delhi">Delhi</option>
+                              <option value="Chennai">Chennai</option>
+                              <option value="Kolkata">Kolkata</option>
+                           </select>
+                        </div>
+                        <div class='next'>
+                           To
+                           <br>
+                           <select name="to">
+                              <option value="Delhi">Delhi</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Chennai">Chennai</option>
+                              <option value="Kolkata">Kolkata</option>
+                           </select>
+                        </div>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        Departure date
+                        <br>
+                        <input type="date" class="cal" name="departure" min="2016-01-01" required>
+                     </div>
+                     <br>
+                     <div class='wrapper'>
+                        <div class='next'>
+                           Adult
+                           <br>
+                           <input type="number" name="adult" class="number" value="1" min='1'>
+                        </div>
+                        <div class='next'>
+                           Child
+                           <br>
+                           <input type="number" name="child" class="number" value="0" min='0'>
+                        </div>
+                        <div class='next'>
+                           Type
+                           <br>
+                           <select name="class">
+                              <option value="AC Seater">AC Seater</option>
+                              <option value="AC Semi-Sleeper">AC Semi-Sleeper</option>
+                              <option value="AC Sleeper">AC Sleeper</option>
+                           </select>
+                        </div>
+                     </div>
+                     <br>
+                     <br>
+                     <br>
+                     <input type="submit" class="submit" value="Search Buses">
+                  </form>
+               </div>
+               <div id="deals" class="tab">
+                  <form name="Deals" action="Search.html">
+                     <br>
+                     <table id='desc'>
+                        <tr>
+                           <td>
+                              Delhi tour
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              Enjoy all exclusive Delhi tour just at Rs.10000
+                           </td>
+                        </tr>
+                     </table>
+                     <br>
+                     <br>
+                     <video width='200' id='vid' controls>
+                        <source src="Delhi.mp4" type="video/mp4">
+                     </video>
+                     <br>
+                     <br>
+                     <input type="submit" class="submit" value="Book now">
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div class="wrapper" id="deals_style">
+         <div class='next'>
+            <img src='deals_mumbai.jpg' onclick='myfunc(this)' id='Mumbai'/>
+            <br>
+            <center>Tour of Mumbai</center>
+         </div>
+         <div class='next'>
+            <img src='deals_delhi.jpg' onclick='myfunc(this)' id='Delhi'/>
+            <br>
+            <center>Tour of Delhi</center>
+         </div>
+         <div class='next'>
+            <img src='deals_kolkata.jpg' onclick='myfunc(this)' id='Kolkata'/>
+            <br>
+            <center>Tour of Kolkata</center>
+         </div>
+         <div class='next'>
+            <img src='deals_chennai.jpg' onclick='myfunc(this)' id='Chennai'/>
+            <br>
+            <center>Tour of Chennai</center>
+         </div>
+      </div>
+      <hr>
+      <footer class='image'>
+         <nav>
+            <a href="About_us.html">About us</a> |
+            <a href="Contact_us.html">Contact us</a> |
+            <a href="Feedback.html">Feedback</a>
+         </nav>
+      </footer>
+   </body>
+</html>
